@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>ToDo</title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="ToDoController" class="platform-ios platform-cordova platform-webview">
+
+    <ion-pane>
+      <ion-header-bar class="bar-positive">
+        <h1 class="title">ToDo</h1>
+      </ion-header-bar>
+      <ion-content>
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <input id="titulo" type="text" ng-model="tarefa.titulo" placeholder="Nova tarefa">
+          </label>
+          <button class="button button-positive button-small" ng-click="criarTarefa(tarefa)">
+            Criar
+          </button>
+        </div>
+        <ion-list>
+          <ion-item ng-repeat="tarefa in tarefas" ng-class="{'tarefa-concluida' : tarefa.completa}" ng-click="marcarTarefa(tarefa)" ng-hide="!mostrarTarefas && tarefa.completa">
+            <span ng-bind="tarefa.titulo"></span>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+
+      <ion-footer-bar class="bar-positive" align-title="center">
+          <div class="title" ng-click="mostrarTarefasFinalizadas()">{{!mostrarTarefas ? 'Mostrar' : 'Esconder' }} tarefas finalizadas</div>
+      </ion-footer-bar>
+    </ion-pane>
+  </body>
+</html>

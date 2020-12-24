@@ -1,0 +1,10 @@
+/* Empty. Add your own CSS if you like */
+
+.tarefa-concluida {
+   text-decoration: line-through;
+   background-color: #EEEDED;
+}
+
+ion-footer-bar .title {
+   cursor: pointer;
+}
